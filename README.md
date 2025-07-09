@@ -21,6 +21,17 @@ GLP（流动性提供者代币）的价格就是用AUM除以GLP的总供应量�
 请注意，该值必须为“1”而不是“0”，因为“0”表示没有上限
 
 
+## BlockSec 分析 - [查看链接](https://x.com/BlockSecTeam/status/1942965515007455521)
+
+初步分析发现，GMX 的订单管理账户（0xd4266f8f82f7405429ee18559e548979d49160f3）发起了一笔交易，将合约地址作为 executeDecreaseOrder 的第一个参数传入，然后攻击者利用重入漏洞实施攻击。
+
+orderBook.executeIncreaseOrder() 调用了开发者合约的 fallback 函数，然后回调了奖励路由器和保险库，可能是跨函数/跨合约的重入。
+
+![](/docs/2.jpeg)
+
+
+
+
 ## 慢雾分析结果 - [查看链接](https://x.com/peckshield/status/1942970395830923732)
 
 今天的 
